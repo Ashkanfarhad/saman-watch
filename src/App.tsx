@@ -158,11 +158,6 @@ export default function App() {
             {businessData.name}
           </h1>
 
-          {/* Type/Description */}
-          <p className="text-zinc-400 text-sm mb-4 font-medium opacity-80 uppercase tracking-widest">
-            {businessData.type}
-          </p>
-
           {/* Badge */}
           <div className="flex items-center gap-1.5 px-3 py-1 rounded-full bg-zinc-800/80 border border-zinc-700 text-sm text-zinc-300 backdrop-blur-sm">
             <MapPin className="w-3.5 h-3.5 text-gold" />
@@ -198,19 +193,6 @@ export default function App() {
           </AnimatePresence>
         </div>
 
-        {/* Quote Section */}
-        <motion.div 
-          initial={{ opacity: 0 }}
-          animate={{ opacity: 1 }}
-          transition={{ delay: 0.6 }}
-          className="w-full text-center relative"
-        >
-          <div className="w-24 h-[1px] bg-gradient-to-r from-transparent via-gold to-transparent mx-auto mb-8 shadow-[0_0_8px_rgba(212,175,55,0.6)]" />
-          <p className="text-zinc-400 italic text-lg leading-relaxed">
-            "{businessData.quote}"
-          </p>
-        </motion.div>
-
         {/* Footer Section - Chaplin Chap Branded */}
         <footer className="mt-24 pt-12 border-t border-zinc-900 w-full flex flex-col items-center gap-6">
           <div className="flex flex-col items-center gap-4 group">
@@ -232,11 +214,17 @@ export default function App() {
               {/* Floating Logo Glow */}
               <div className="absolute inset-0 bg-gold/20 blur-xl rounded-full scale-150 opacity-0 group-hover:opacity-100 transition-opacity duration-500" />
               <img 
-                src="https://chaplin-chap.vercel.app/logo.png" 
+                src="https://i.ibb.co/7NNMczJt/chaplin.png" 
                 alt="Chaplin Chap" 
-                className="w-12 h-12 rounded-xl relative z-10 grayscale hover:grayscale-0 transition-all duration-500"
+                className="w-12 h-12 rounded-xl relative z-10 transition-all duration-500"
                 onError={(e) => {
-                  (e.target as HTMLImageElement).src = "https://ui-avatars.com/api/?name=CC&background=333&color=fff";
+                  const target = e.target as HTMLImageElement;
+                  if (target.src !== "https://ui-avatars.com/api/?name=CC&background=333&color=fff") {
+                    target.src = "https://i.ibb.co/7NNMczJ/chaplin.png"; // Fallback attempt
+                    target.onerror = () => {
+                      target.src = "https://ui-avatars.com/api/?name=CC&background=333&color=fff";
+                    };
+                  }
                 }}
               />
             </motion.a>
