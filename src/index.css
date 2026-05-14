@@ -1,0 +1,69 @@
+@import "tailwindcss";
+
+@theme {
+  --font-sans: "Inter", ui-sans-serif, system-ui, sans-serif, "Tahoma", "Arial";
+  --font-display: "Outfit", "Inter", sans-serif;
+  
+  --color-gold: #D4AF37;
+  --color-gold-light: #F9E2AF;
+}
+
+@layer base {
+  body {
+    @apply bg-zinc-950 text-zinc-100;
+    font-feature-settings: "ss01", "ss02", "cv01", "cv02";
+  }
+}
+
+@keyframes float {
+  0%, 100% { transform: translateY(0); }
+  50% { transform: translateY(-10px); }
+}
+
+@keyframes pulse-glow {
+  0%, 100% { opacity: 0.4; transform: scale(1); }
+  50% { opacity: 0.7; transform: scale(1.1); }
+}
+
+@keyframes shimmer {
+  0% { transform: translateX(-100%); }
+  100% { transform: translateX(100%); }
+}
+
+@keyframes sparkle {
+  0%, 100% { opacity: 0; transform: scale(0); }
+  50% { opacity: 1; transform: scale(1); }
+}
+
+.animate-float {
+  animation: float 3s ease-in-out infinite;
+}
+
+.animate-pulse-glow {
+  animation: pulse-glow 4s ease-in-out infinite;
+}
+
+.shimmer-text {
+  @apply relative overflow-hidden;
+}
+
+.shimmer-text::after {
+  content: "";
+  @apply absolute inset-0;
+  background: linear-gradient(
+    90deg,
+    transparent,
+    rgba(255, 255, 255, 0.2),
+    transparent
+  );
+  animation: shimmer 2s infinite;
+}
+
+.sparkle-container {
+  @apply pointer-events-none absolute inset-0 overflow-hidden;
+}
+
+.sparkle {
+  @apply absolute bg-white rounded-full;
+  animation: sparkle 2s infinite;
+}
