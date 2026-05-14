@@ -72,7 +72,7 @@ export default function App() {
     name: "SAMAN WATCH",
     type: "فڕۆشتنی کاتژمێری دەستی و بۆنی پیاوان",
     address: "ڕانیە - بەرامبەر باغی گشتی",
-    quote: "کات و جوانی لێرە بەیەک دەگەن، باشترینەکان لای ئێمەیە",
+    quote: "کوالێتی پێشینەی کارەکانمانە",
     logo: "https://i.ibb.co/jZyd1430/photo-2026-05-14-01-34-01.jpg", // Corrected ID
     accentColor: "gold",
   };
@@ -154,7 +154,7 @@ export default function App() {
           </motion.div>
 
           {/* Name */}
-          <h1 className="text-3xl font-bold mb-2 tracking-tight text-transparent bg-clip-text bg-gradient-to-r from-gold via-gold-light to-gold">
+          <h1 className="text-4xl font-black mb-4 tracking-tighter text-transparent bg-clip-text bg-gradient-to-r from-gold via-gold-light to-gold drop-shadow-[0_0_15px_rgba(212,175,55,0.2)]">
             {businessData.name}
           </h1>
 
@@ -192,6 +192,21 @@ export default function App() {
             ))}
           </AnimatePresence>
         </div>
+
+        {/* Quote Section */}
+        <motion.div 
+          initial={{ opacity: 0, y: 10 }}
+          animate={{ opacity: 1, y: 0 }}
+          transition={{ delay: 0.6, duration: 0.8 }}
+          className="w-full text-center relative px-4"
+        >
+          <div className="w-32 h-[1px] bg-gradient-to-r from-transparent via-gold/50 to-transparent mx-auto mb-10 shadow-[0_0_12px_rgba(212,175,55,0.4)]" />
+          <p className="text-2xl font-medium tracking-wide leading-relaxed text-transparent bg-clip-text bg-gradient-to-b from-zinc-100 to-zinc-400 drop-shadow-sm">
+            <span className="text-gold opacity-50 text-3xl ml-2 font-serif">"</span>
+            {businessData.quote}
+            <span className="text-gold opacity-50 text-3xl mr-2 font-serif">"</span>
+          </p>
+        </motion.div>
 
         {/* Footer Section - Chaplin Chap Branded */}
         <footer className="mt-24 pt-12 border-t border-zinc-900 w-full flex flex-col items-center gap-6">
